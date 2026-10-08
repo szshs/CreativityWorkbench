@@ -41,6 +41,7 @@ const config = { mcpServers: { 'creativity-workbench': {
   args: [join(root, 'scripts', 'workbench-mcp.mjs'), '--ensure-runtime'], timeout: 210000,
 } } };
 await writeFile(join(output, 'mcp.json'), JSON.stringify(config, null, 2) + '\n');
-await writeFile(join(output, 'TESTING.md'), await readFile(join(root, 'docs', '创意工作台验收条目.md')));
-await writeFile(join(output, 'SETUP.md'), await readFile(join(root, 'docs', 'WORKBUDDY_CORE.md')));
+await writeFile(join(output, 'TESTING.md'), await readFile(join(root, 'docs', 'ACCEPTANCE.md')));
+await writeFile(join(output, 'SETUP.md'), await readFile(join(root, 'docs', 'WORKBUDDY.md')));
+await writeFile(join(output, 'USAGE.md'), await readFile(join(root, 'docs', 'USAGE.md')));
 console.log(JSON.stringify({ output, config: join(output, 'mcp.json'), skills: names.map(name => join(output, name + '.zip')), note: '只生成本地导入包，未修改 WorkBuddy 配置或执行加载。' }, null, 2));

@@ -1,9 +1,13 @@
 // Reproducible, original vector illustrations. No scraped or AI-generated media.
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir,writeFile,access} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import sharp from 'sharp';
 import {themeAssets} from '../workbench/theme-assets/catalog.mjs';
 const directory=fileURLToPath(new URL('../public/theme-assets/lingnan-v1/',import.meta.url));
+if(process.argv.includes('--if-missing')) {
+  const present=await Promise.all(themeAssets.flatMap(a=>[`${a.id}.svg`,`${a.id}.png`,`${a.id}-thumb.webp`]).map(name=>access(`${directory}/${name}`).then(()=>true,()=>false)));
+  if(present.every(Boolean))process.exit(0);
+}
 await mkdir(directory,{recursive:true});
 const repeat=(n,draw)=>Array.from({length:n},(_,i)=>draw(i)).join('');
 const rect=(x,y,w,h,fill,extra='')=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${fill}" ${extra}/>`;

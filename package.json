@@ -7,6 +7,12 @@
     "node": ">=22.13.0"
   },
   "scripts": {
+    "prepare": "npm run assets:ensure",
+    "predev": "npm run assets:ensure",
+    "predev:web": "npm run assets:ensure",
+    "prebuild": "npm run assets:ensure",
+    "pretest": "npm run assets:ensure",
+    "preworkbench:setup": "npm run assets:ensure",
     "dev": "node --import ./lib/workbench/temp-env.mjs scripts/dev.mjs",
     "dev:web": "node --import ./lib/workbench/temp-env.mjs node_modules/vinext/dist/cli.js dev --port 3001",
     "build": "node --import ./lib/workbench/temp-env.mjs node_modules/vinext/dist/cli.js build",
@@ -19,7 +25,8 @@
     "lint": "node --import ./lib/workbench/temp-env.mjs node_modules/oxlint/bin/oxlint",
     "typecheck": "node --import ./lib/workbench/temp-env.mjs node_modules/typescript/bin/tsc --noEmit --incremental false",
     "assets:theme": "node --import ./lib/workbench/temp-env.mjs scripts/build-theme-assets.mjs",
-    "demo:tourism": "node --import ./lib/workbench/temp-env.mjs scripts/demo-tourism.mjs",
+    "assets:ensure": "node --import ./lib/workbench/temp-env.mjs scripts/build-theme-assets.mjs --if-missing",
+    "check:public": "node scripts/check-public-tree.mjs",
     "test:memory": "node --import ./lib/workbench/temp-env.mjs --expose-gc scripts/verify-memory.mjs"
   },
   "dependencies": {

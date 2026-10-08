@@ -11,6 +11,6 @@
 7. 在真实浏览器测试筛选无结果、清单增删、FAQ 展开→收起→再次展开、键盘、手机布局、所用媒体播放和控制。用实际操作结果填写验证记录；静态检查不算浏览器通过。无接入的预约、支付或导航不要伪装成功。
 8. 将实际网站 ZIP 放入当前项目 inbox，website_source_import 记录真实验证方式与结果，再 workflow_update(action="adopt-website-source")、project_deliver。保存或打包不等于发布。
 
-旧原图 handoff 问题仍遵守 existing-handoff.md：接续网页原任务，不新建任务替代。作品示例可参考 examples/lingnan-visit，它是具体 Demo，不是新网站必须套用的模板。
+原图 handoff 遵守 existing-handoff.md：接续网页原任务，不新建任务替代。根据用户目标实现网站，不把个人演示作品当作新网站必须套用的模板。
 
 资源核查：workbench_status.resources 提供 Runtime 进程内存与缓存统计。不能把一次采样或通过本地脚本说成 WorkBuddy、供应商或浏览器都没有内存泄漏。
